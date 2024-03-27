@@ -1,5 +1,6 @@
+from models.student import Student
 class Course:
-    def __init__(self, id, name, description,duration,price,teacher,students):
+    def __init__(self, id, name, description,duration,price,teacher,students: list[Student]):
         self.id = id
         self.name = name
         self.description = description
