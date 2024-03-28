@@ -1,6 +1,5 @@
-from models.teacher import Teacher
 class Task:
-    def __init__(self, id, name, description, type, answer,topic,teacher: Teacher):
+    def __init__(self, id, name, description, type, answer,topic,teacher):
         self.id = id
         self.name = name
         self.description = description

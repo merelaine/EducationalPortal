@@ -1,7 +1,7 @@
 from models.student import Student
-from models.teacher import Teacher
+
 class Course:
-    def __init__(self, id, name, description, duration,price,teacher: Teacher,students: list[Student]):
+    def __init__(self, id, name, description, duration,price,teacher,students: list[Student]):
         self.id = id
         self.name = name
         self.description = description
@@ -25,3 +25,18 @@ class Course:
                     and self.students == other.students
             )
         return False
+
+    def assign_teacher(self, new_teacher,all_courses):
+        # Бизнес-правило: Преподаватель не может быть прикреплен более, чем к 3 курсам
+        if new_teacher.get_number_of_courses(all_courses) >= 3:
+            print("Ошибка: Преподаватель уже прикреплен к 3 курсам")
+            return False
+        self.teacher = new_teacher
+        return True
+
+    def enroll_student(self, student):
+        if student.get_course_count(self.students) <= 5:
+            self.students.append(student)
+            print(f"Студент {student.name} успешно записан на курс: {self.name}")
+        else:
+            print(f"Ошибка: Студент {student.name} уже записан на максимальное количество курсов.")

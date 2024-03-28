@@ -23,3 +23,16 @@ class Student:
                     and self.phone == other.phone
             )
         return False
+
+    def check_unique_email(self, students_list):
+        for student in students_list:
+            if student.email == self.email and student.id != self.id:
+                return False
+        return True
+
+    def get_course_count(self, courses):
+        count = 0
+        for course in courses:
+            if self in course.students:
+                count += 1
+        return count

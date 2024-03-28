@@ -23,3 +23,10 @@ class Teacher:
                     and self.phone == other.phone
             )
         return False
+
+    def get_number_of_courses(self, courses):
+        count = 0
+        for course in courses:
+            if course.teacher == self:
+                count += 1
+        return count

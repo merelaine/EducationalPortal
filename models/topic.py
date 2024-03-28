@@ -1,5 +1,4 @@
 from dataclasses import dataclass
-from models.course import Course
 
 @dataclass(frozen=True)
 class Topic:
@@ -7,7 +6,7 @@ class Topic:
     name: str
     description: str
     theory: str
-    course: Course
+    course: int
 
     def __str__(self):
          return f"Тема: {self.name}, Описание: {self.description}, Курс: {self.course}"
