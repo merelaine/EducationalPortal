@@ -51,7 +51,7 @@ class TestStudentTask(unittest.TestCase):
         submission_date = current_date - timedelta(days=3)  # задание было отправлено 3 дня назад
         student = Student(id=1, surname='Ivanov', name='Ivan', lastname='Ivanovich', email='ivan@gmail.com', password='123',
                         phone='123456')
-        task = Task(id=1,name='task1', description='description', type='make an enum type',answer='answer',topic=1,teacher=1)
+        task = Task(id=1,name='task1', description='description', type='type',answer='answer',topic=1,teacher=1)
         student_task = Student_Task(1, student, task, 80, "2 hours", submission_date)
 
         expected_output = "Ответ на задание был проверен в течение 5 дней после отправки."
@@ -63,7 +63,7 @@ class TestStudentTask(unittest.TestCase):
         student = Student(id=1, surname='Ivanov', name='Ivan', lastname='Ivanovich', email='ivan@gmail.com',
                           password='123',
                           phone='123456')
-        task = Task(id=1, name='task1', description='description', type='make an enum type', answer='answer', topic=1,
+        task = Task(id=1, name='task1', description='description', type='type', answer='answer', topic=1,
                     teacher=1)
         student_task = Student_Task(2, student, task, 90, "1 hour", submission_date)
 
