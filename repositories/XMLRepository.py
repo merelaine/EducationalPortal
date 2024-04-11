@@ -2,7 +2,6 @@ from repositories.repository import Repository
 from models import *
 import xml.etree.ElementTree as ET
 import os
-import xmltodict
 
 class XMLRepository(Repository):
     def __init__(self, name, path):
