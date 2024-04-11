@@ -34,9 +34,11 @@ class Course:
         self.teacher = new_teacher
         return True
 
-    def enroll_student(self, student):
-        if student.get_course_count(self.students) <= 5:
-            self.students.append(student)
-            print(f"Студент {student.name} успешно записан на курс: {self.name}")
+    def enroll_student(self, new_student,all_courses):
+        if new_student.get_course_count(all_courses) <= 5:
+            self.students.append(new_student)
+            print(f"Студент {new_student.name} успешно записан на курс: {self.name}")
+            return True
         else:
-            print(f"Ошибка: Студент {student.name} уже записан на максимальное количество курсов.")
+            print(f"Ошибка: Студент {new_student.name} уже записан на максимальное количество курсов.")
+            return False
