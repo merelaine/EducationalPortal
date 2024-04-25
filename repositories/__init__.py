@@ -4,3 +4,4 @@ from .task_repos import TaskRepository
 from .topic_repos import TopicRepository
 from .teacher_repos import TeacherRepository
 from .studtask_repos import StudTaskRepository
+from .XMLRepository import XMLRepository
