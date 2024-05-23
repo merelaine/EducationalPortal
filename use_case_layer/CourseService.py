@@ -21,7 +21,9 @@ class CourseService:
         course_teacher = self.teacher_repo.get(teacher_id)
         if isinstance(course_teacher,Teacher) or course_teacher is None:
             new_course = Course(last_id,name,description,duration,price,course_teacher,[])
-            self.course_repo.add(new_course)
+            with unit_of_work() as session:
+                self.course_repo = SQLRepository(session)
+                self.course_repo.add(new_course)
             return 'Course is created'
         else:
             return 'Set teacher or None'

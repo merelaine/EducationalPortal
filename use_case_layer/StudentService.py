@@ -16,7 +16,9 @@ class StudentService:
 
         new_stud = Student(last_id,surname, name, lastname,email,password,phone)
         if new_stud.check_unique_email(students):
-            self.stud_repo.add(new_stud)
+            with unit_of_work() as session:
+                self.stud_repo = SQLRepository(session)
+                self.stud_repo.add(new_stud)
             return 'Student is created'
         else:
             return 'Student is not created. E-mail is not unique.'
