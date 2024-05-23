@@ -1,9 +1,10 @@
 from models import *
 from repositories import *
+from UoW import unit_of_work
 
 
 class TeacherService:
-    def __init__(self, t_repo: TeacherRepository):
+    def __init__(self, t_repo):
         self.t_repo = t_repo
 
     def create_teacher(self, surname: str, name: str, lastname: str, email: str, password: str, phone: str):
