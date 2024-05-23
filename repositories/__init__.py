@@ -5,3 +5,5 @@ from .topic_repos import TopicRepository
 from .teacher_repos import TeacherRepository
 from .studtask_repos import StudTaskRepository
 from .XMLRepository import XMLRepository
+from .SQLRepository import SQLRepository
+from .JSONRepository import JSONRepository

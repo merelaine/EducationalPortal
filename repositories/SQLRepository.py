@@ -1,76 +1,8 @@
 from sqlalchemy import create_engine, Column, Integer, String, ForeignKey, Table
 from sqlalchemy.orm import sessionmaker, declarative_base, relationship, class_mapper
-from repository import Repository
+from .repository import Repository
 from models import *
-
-Base = declarative_base()
-
-class StudentTable(Base):
-    __tablename__ = 'students'
-    id = Column(Integer, primary_key=True, autoincrement=True)
-    surname = Column(String)
-    name = Column(String)
-    lastname = Column(String)
-    email = Column(String)
-    password = Column(String)
-    phone = Column(String)
-
-class TeacherTable(Base):
-    __tablename__ = 'teachers'
-    id = Column(Integer, primary_key=True, autoincrement=True)
-    surname = Column(String)
-    name = Column(String)
-    lastname = Column(String)
-    email = Column(String)
-    password = Column(String)
-    phone = Column(String)
-
-
-student_course = Table('student_course', Base.metadata,
-    Column('student_id', Integer, ForeignKey('students.id')),
-    Column('course_id', Integer, ForeignKey('courses.id'))
-)
-
-class CourseTable(Base):
-    __tablename__ = 'courses'
-    id = Column(Integer, primary_key=True, autoincrement=True)
-    name = Column(String)
-    description = Column(String)
-    duration = Column(Integer)
-    price = Column(Integer)
-    teacher_id = Column(Integer, ForeignKey('teachers.id'))
-    teacher = relationship("TeacherTable")
-    students = relationship("StudentTable", secondary="student_course")
-
-class TopicTable(Base):
-    __tablename__ = 'topics'
-    id = Column(Integer, primary_key=True, autoincrement=True)
-    name = Column(String)
-    description = Column(String)
-    theory = Column(String)
-    course_id = Column(Integer, ForeignKey('courses.id'))
-    course = relationship("CourseTable")
-
-class TaskTable(Base):
-    __tablename__ = 'tasks'
-    id = Column(Integer, primary_key=True, autoincrement=True)
-    name = Column(String)
-    description = Column(String)
-    type = Column(String)
-    answer = Column(String)
-    topic_id = Column(Integer, ForeignKey('topics.id'))
-    topic = relationship("TopicTable")
-
-class StudentTaskTable(Base):
-    __tablename__ = 'student_tasks'
-    id = Column(Integer, primary_key=True, autoincrement=True)
-    student_id = Column(Integer, ForeignKey('students.id'))
-    student = relationship("StudentTable")
-    task_id = Column(Integer, ForeignKey('tasks.id'))
-    task = relationship("TaskTable")
-    score = Column(Integer)
-    time = Column(Integer)
-    date = Column(String)
+from models.DBmodels import Base,StudentTable,TeacherTable,StudentCourse,CourseTable,TopicTable,TaskTable,StudentTaskTable
 
 
 class SQLRepository(Repository):
@@ -143,9 +75,4 @@ class SQLRepository(Repository):
         else:
             raise ValueError(f"{item_class.__name__} not found")
 
-if __name__ == '__main__':
-    sqlrepo = SQLRepository()
-    stud = Student(1,'lk','g','уg','f','345','3568776')
-    sqlrepo.add(stud)
-    print(sqlrepo.get_all(stud.__class__))
-    sqlrepo.remove(5,Student)
+
