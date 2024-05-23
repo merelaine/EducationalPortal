@@ -1,6 +1,6 @@
 from models import *
 from repositories import *
-from UoW import unit_of_work
+from use_case_layer.UoW import unit_of_work
 
 class StudentService:
     def __init__(self,stud_repo:StudentRepository):

@@ -1,6 +1,6 @@
 from models import *
 from repositories import *
-from UoW import unit_of_work
+from use_case_layer.UoW import unit_of_work
 
 class CourseService:
     def __init__(self,course_repo:CourseRepository,stud_repo:StudentRepository,teacher_repo:TeacherRepository, topic_repo: TopicRepository, task_repo: TaskRepository):
