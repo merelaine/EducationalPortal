@@ -8,6 +8,17 @@ class Teacher:
         self.password = password
         self.phone = phone
 
+    def __dict__(self):
+        return {
+            'id': self.id,
+            'surname': self.surname,
+            'name': self.name,
+            'lastname': self.lastname,
+            'email': self.email,
+            'password': self.password,
+            'phone': self.phone
+        }
+
     def __str__(self):
         return f"Преподаватель: {self.surname} {self.name} {self.lastname}, Email: {self.email}, Телефон: {self.phone}"
 

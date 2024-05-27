@@ -27,26 +27,15 @@ def index():
     '''
 
 @app.route('/teachers', methods=['POST'])
-def create_teacher():
-    data = request.get_json()
-    surname = data['surname']
-    name = data['name']
-    lastname = data['lastname']
-    email = data['email']
-    password = data['password']
-    phone = data['phone']
-
-    result = teacher_service.create_teacher(surname, name, lastname, email, password, phone)
-    return jsonify({"message": result})
+def teachers():
+    return 'Это страница для учителей'
 
 @app.route('/courses')
 def courses():
-    # Здесь будет логика для работы с курсами
     return 'Это страница для курсов'
 
 @app.route('/students')
 def students():
-    # Здесь будет логика для работы со студентами
     return 'Это страница для студентов'
 
 if __name__ == '__main__':
