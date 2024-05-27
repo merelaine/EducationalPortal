@@ -1,0 +1,35 @@
+{
+    "Student_1953459610928": {
+        "Student": {
+            "id": 1,
+            "surname": "Ivanov",
+            "name": "Ivan",
+            "lastname": "Ivanovich",
+            "email": "ivan@gmail.com",
+            "password": "123",
+            "phone": "123456"
+        }
+    },
+    "Student_1953459612512": {
+        "Student": {
+            "id": 2,
+            "surname": "Petrov",
+            "name": "Ivan",
+            "lastname": "Ivanovich",
+            "email": "pivan@gmail.com",
+            "password": "123",
+            "phone": "123456"
+        }
+    },
+    "Teacher_1953459612560": {
+        "Teacher": {
+            "id": 1,
+            "surname": "Petrov",
+            "name": "Ivan",
+            "lastname": "Petrovich",
+            "email": "pi@gmail.com",
+            "password": "123",
+            "phone": "123456"
+        }
+    }
+}
