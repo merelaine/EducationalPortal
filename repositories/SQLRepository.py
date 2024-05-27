@@ -4,9 +4,10 @@ from .repository import Repository
 from models import *
 from models.DBmodels import StudentTable,TeacherTable,StudentCourse,CourseTable,TopicTable,TaskTable,StudentTaskTable
 
+Base = declarative_base()
 
 class SQLRepository(Repository):
-    def __init__(self, session: Session):
+    def __init__(self):
         super().__init__()
         self.table_mapping = {
             Student: StudentTable,
@@ -16,10 +17,10 @@ class SQLRepository(Repository):
             Task: TaskTable,
             Student_Task: StudentTaskTable
         }
-        #self.engine = create_engine("sqlite:///database.db")
-        #Base.metadata.create_all(self.engine)
-        #self.Session = sessionmaker(bind=self.engine)
-        self.session = session
+        self.engine = create_engine("sqlite:///database.db")
+        Base.metadata.create_all(self.engine)
+        self.Session = sessionmaker(bind=self.engine)
+        #self.session = session
 
     def add(self, item):
         session = self.Session()

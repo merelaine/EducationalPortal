@@ -13,6 +13,17 @@ class StudentTable(Base):
     password = Column(String)
     phone = Column(String)
 
+    def serialize(self):
+        return {
+            'id': self.id,
+            'surname': self.surname,
+            'name': self.name,
+            'lastname': self.lastname,
+            'email': self.email,
+            'password': self.password,
+            'phone': self.phone
+        }
+
 class TeacherTable(Base):
     __tablename__ = 'teachers'
     id = Column(Integer, primary_key=True, autoincrement=True)
@@ -23,6 +34,16 @@ class TeacherTable(Base):
     password = Column(String)
     phone = Column(String)
 
+    def serialize(self):
+        return {
+            'id': self.id,
+            'surname': self.surname,
+            'name': self.name,
+            'lastname': self.lastname,
+            'email': self.email,
+            'password': self.password,
+            'phone': self.phone
+        }
 
 class StudentCourse(Base):
     __tablename__ = 'student_course'

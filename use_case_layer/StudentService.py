@@ -7,7 +7,7 @@ class StudentService:
         self.stud_repo = stud_repo
 
     def create_student(self, surname: str, name: str, lastname: str,email: str,password: str,phone: str):
-        students = self.stud_repo.get_all()
+        students = self.stud_repo.get_all(Student)
 
         if len(students) > 0:
             last_id = students[-1].id + 1
@@ -17,8 +17,14 @@ class StudentService:
         new_stud = Student(last_id,surname, name, lastname,email,password,phone)
         if new_stud.check_unique_email(students):
             with unit_of_work() as session:
-                self.stud_repo = SQLRepository(session)
+                self.stud_repo = SQLRepository()
                 self.stud_repo.add(new_stud)
             return 'Student is created'
         else:
             return 'Student is not created. E-mail is not unique.'
+
+    def get_all_students(self):
+        with unit_of_work() as session:
+            self.stud_repo = SQLRepository()
+            students = self.stud_repo.get_all(Student)
+            return students

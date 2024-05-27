@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Создать студента</title>
+</head>
+<body>
+    <h1>Создать студента</h1>
+    <form method="POST" action="/students/new">
+        <label for="surname">Surname:</label>
+        <input type="text" name="surname" id="surname" required><br>
+
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" required><br>
+
+        <label for="lastname">Lastname:</label>
+        <input type="text" name="lastname" id="lastname" required><br>
+
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" required><br>
+
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password" required><br>
+
+        <label for="phone">Phone:</label>
+        <input type="text" name="phone" id="phone" required><br>
+
+        <input type="submit" value="Создать студента">
+    </form>
+</body>
+</html>
